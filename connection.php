@@ -1,8 +1,8 @@
 <?php
-	$host="localhost";
-	$user="id2377547_root";
-	$pass="shubhshubh1";
-	$databasename="id2377547_babble";
+	$host="*****";
+	$user="******";
+	$pass="**********";
+	$databasename="*************";
 	$conn=mysqli_connect($host,$user,$pass);
 	if($conn)
 	{
