@@ -1,0 +1,138 @@
+{% extends 'new_base.html' %}
+{% load widget_tweaks %}
+{% load render_table from django_tables2 %}
+
+{% block title %}Filter Records View {% endblock %}
+
+{% block pagecontent %}
+<style>
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+.accordion-toggle:after {
+    font-family: 'FontAwesome';
+    content: "\f068";     
+    float: right;
+}
+
+.panel-heading.collapsed .accordion-toggle:after {
+    /* symbol for "collapsed" panels */
+   content: "\f067"; 
+}
+#accordion {
+	cursor: pointer;
+}
+
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+ 
+.ui-autocomplete {
+    height: 100px;
+}
+
+#id_Date_0 {
+	margin-right: 2px;
+}
+
+#id_Date_1 {
+	margin-left: 5px;
+}
+
+h3 {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+hr { 
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+	color: #ffffff;
+}
+
+.container {
+	max-width: 1120px;
+}
+
+</style>
+
+<div class="container">
+
+<div class="panel panel-default" id="accordion">
+	<div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+		<h4 class="panel-title accordion-toggle">
+			<span class="glyphicon glyphicon-filter"></span> Search Filters 
+		</h4>
+	</div>
+	
+	<div id="collapseOne" class="panel-collapse collapse">
+		<div class="panel-body">
+		
+			<form method="get" name="myform">								
+				<div class="row">
+					
+					<div class="form-group col-sm-4 col-md-3">
+					<label> Accident Type: </label>
+					{% render_field filter.form.AccdType class="form-control" %}
+					</div>
+					
+					<div class="form-group col-sm-4 col-md-3">
+					<label>Employee Type: </label>
+					{% render_field filter.form.EmpType class="form-control" %}
+					</div>
+					
+					<div class="form-group col-sm-4 col-md-3">
+					<label> Cause: </label>
+					{% render_field filter.form.Cause class="form-control" %}
+					</div>
+									
+					<div class="form-group col-sm-4 col-md-3">
+					<label> Shift: </label>
+					{% render_field filter.form.Shift class="form-control" %}
+					</div>
+					
+					<div class="form-group col-sm-4 col-md-3">
+					<label> Unit Name: </label>
+					{% render_field filter.form.UnitName class="form-control" %}
+					</div>
+					
+					<div class="form-group col-sm-4 col-md-3">
+					<label> Department: </label>
+					{% render_field filter.form.Department class="form-control" %}
+					</div>
+					
+					<div class="form-group col-sm-6 col-md-6">
+					<label> Date Range: </label>
+						<div class="date-range form-inline">
+							{% render_field filter.form.Date class="form-control" %}
+						</div>
+					</div>
+										
+				</div>
+				
+				<button type="submit" class="btn btn-primary">
+					<span class="glyphicon glyphicon-search"></span> Search Records
+				</button>
+			</form>
+			
+		</div>
+	</div>
+</div>
+</div>
+<hr/>
+<h3>Accident Records</h3>
+<hr/>
+
+{% render_table table %}
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends 'new_base.html' %}
+{% load widget_tweaks %}
+{% load render_table from django_tables2 %}
+
+{% block title %} {{ pagetitle }} Records{% endblock %}
+
+{% block pagecontent %}
+<style>
+.nav-header{
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+h3 {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+h4 {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+hr { 
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.table{
+    table-layout: fixed;
+}
+
+.table-responsive{
+    padding : 0 30px 0 0;
+}
+
+.table-bordered th, .table-bordered td {
+	border: 1px solid #ddd!important
+}
+
+thead {
+	color: #fff;
+	background-color: #373a3c;
+}
+
+th {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100px;
+}
+
+td {
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    width: 100px;
+}
+
+tr:last-child td{
+    background-color: rgb(168, 224, 233);
+}
+
+center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+}
+
+.wrapper {
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+}
+
+.content-wrapper {
+  float: left;
+  width: 100%;
+}
+
+.content {
+  margin-right: 320px;
+  margin-left: 50px;
+  clear: both;
+  overflow: auto;
+}
+
+.sidebar {
+  position: relative;
+  width: 220px;
+  margin-left: -320px;
+  margin-right: 50px;
+  margin-top: 45px;
+  float: right;
+  overflow: hidden;
+}
+
+</style>
+<hr/>
+<h3>{{ Header }} Accident Records</h3>
+<hr/>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="content">
+        	<h4>{{ time }} Accident Stats</h4>
+            <div class = "table-responsive">
+                <table class = "table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Unit / Plants</th>
+                            <th>Regular</th>
+                            <th>Contract</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+            
+                    <tbody>
+                        {% for x in list %}
+                        <tr>
+                            <td>{{ x.0 }}</td>
+                            <td>{{ x.1 }}</td>
+                            <td>{{ x.2 }}</td>
+                            <td>{{ x.3 }}</td>                                        
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>TOTAL</td>
+                            <td>{{ sum_reg}}</td>
+                            <td>{{ sum_contr}}</td>
+                            <td>{{ sum }}</td>
+                        </tr>
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="well">
+            <ul class="nav">
+                <li class="nav-header" >Filters Records By</li>
+                <li><a href="?time=today" value="today">Today</a>
+                </li>
+                <li><a href="?time=thisWeek" value="thisWeek">This Week</a>
+                </li>
+                <li><a href="?time=thisMonth" value="thisMonth">This Month</a>
+                </li>
+                <li><a href="?time=thisYear" value="thisYear">This Year</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<div class="col-md-3">
+    <div class="sidebar-nav-fixed affix">
+
+    </div>
+</div>
+-->
+
+{% endblock %}

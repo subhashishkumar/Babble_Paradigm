@@ -1,0 +1,5 @@
+{% extends 'new_base.html' %}
+{% block title %}Logout {% endblock %}
+{% block pagecontent %}
+<center><h1>You have been logged out.  You may <a href="{% url 'admin:index' %}">log back in</a>.</h1></center>
+{% endblock %}

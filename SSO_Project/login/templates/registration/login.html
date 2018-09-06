@@ -1,0 +1,64 @@
+{% extends 'new_base.html' %}
+
+{% block title %}Member's Login {% endblock %}
+
+{% block pagecontent %}
+<style>
+.panel-default {
+	margin-top: 80px;
+	max-height: 300px;
+} 
+
+.panel .panel-heading {
+	background-color: #aed3f4;
+}
+
+.panel-title {
+	text-align: center;
+	font-family: Helvetica, Arial, Sans-Serif;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+	color: #ffffff;
+}
+
+.message {
+	margin-top: 15px;
+	font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+</style>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1 class="panel-title">Member's Login</h1>
+			</div>
+			<div class="panel-body">
+				{% if error_message %}
+					<p><strong>{{ error_message }}</strong></p>
+				{% endif %}
+				
+					<form method="post" action=".?next={{ redirect_to }}">		
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="inputUsername" class="sr-only">Username</label>
+						<input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+					</div>
+                    <div class="form-group">	
+						<label for="inputPassword" class="sr-only">Password</label>
+						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+					</div>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+						<input type="hidden" name="next" value="{{next}}" />
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+<div class="container">
+    <div class = "table-responsive">
+        <table class = "table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Units / Plants</th>
+                    <th>Regular</th>
+                    <th>Contract</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                {% for ul in fls %}
+                <tr>
+                    <td>{{ ul.0 }}</td>
+                    <td>{{ ul.1 }}</td>
+                    <td>{{ ul.2 }}</td>
+                    <td>{{ ul.3 }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>TOTAL</td>
+                    <td>{{ sumr }}</td>
+                    <td>{{ sumc }}</td>
+                    <td>{{ total }}</td>
+                </tr>
+            <tbody>
+        </table>
+    </div>
+</div>

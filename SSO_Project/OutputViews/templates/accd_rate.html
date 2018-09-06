@@ -1,0 +1,318 @@
+{% extends 'new_base.html' %}
+
+{% block title %} Summary {% endblock %}
+
+{% block pagecontent %}
+
+<style>
+.table-bordered th, .table-bordered td {
+	border: 1px solid #ddd!important
+}
+
+thead {
+	color: #fff;
+	background-color: #373a3c;
+}
+
+th {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+td {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+tr:last-child td{
+	background-color: #b6b6b6;
+}
+
+h3 {
+	text-align: center;
+	font-family: Nevis;
+    font-weight: bold;
+    font-size: 35px;
+	color: black;
+}
+
+h4 {
+	text-align: center;
+    font-weight: bold;
+	color: black;
+}
+
+hr { 
+    display: block;
+    margin-top: 5px;
+	margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+
+</style>
+<hr/>
+	<h3> Present Year Rate Records </h3>
+<hr/>
+
+<div class = "table-responsive">
+   <table class = "table table-bordered table-hover">
+        <thead> 
+            <tr>
+                <th scope="col">Plants / Units </th>
+                <th colspan="3" scope="colgroup">Manhours Worked</th>
+                <th colspan="3" scope="colgroup">Frequency Rate</th>
+                <th colspan="3" scope="colgroup">Severity Rate</th>
+                <th colspan="3" scope="colgroup">LTIFR</th>
+            </tr>          
+
+            <tr>
+                <th></th>
+                <th scope="col">R</th>
+                <th scope="col">C</th>
+                <th scope="col">T</th>
+                <th scope="col">R</th>
+                <th scope="col">C</th>
+                <th scope="col">T</th>
+                <th scope="col">R</th>
+                <th scope="col">C</th>
+                <th scope="col">T</th>
+                <th scope="col">R</th>
+                <th scope="col">C</th>
+                <th scope="col">T</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th scope="row">BSP</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">DSP</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">RSP</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">BSL</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">ISP</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">ASP</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">CFP</th>                 
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">SSP</th>  
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">VISL</th> 
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">CMO</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">RMD</th> 
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">BSP(M)</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">Collieries</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">SRU</th> 
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <th scope="row">Total</th>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+	</table>
+</div>
+<h4> Table Records as of {{ time }}</h4>
+{% endblock %}

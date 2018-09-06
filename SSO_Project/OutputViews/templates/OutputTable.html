@@ -1,0 +1,325 @@
+{% extends 'new_base.html' %}
+
+{% block title %} {{ pagetitle }} {% endblock %}
+
+{% block pagecontent %}
+
+<style>
+body {
+	color: #6a6c6f;
+	background-color: #f1f3f6;
+  }
+  
+.container {
+	max-width: 960px;
+}
+
+.panel-default>.panel-heading {
+	color: #333;
+	background-color: #fff;
+	border-color: #e4e5e7;
+	padding: 0;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.panel-default>.panel-heading a {
+	display: block;
+	padding: 10px 15px;
+}
+
+.panel-default>.panel-heading a:after {
+	content: "";
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	float: right;
+	transition: transform .25s linear;
+	-webkit-transition: -webkit-transform .25s linear;
+}
+
+.panel-default>.panel-heading a[aria-expanded="true"] {
+	background-color: #eee;
+}
+
+.panel-default>.panel-heading a[aria-expanded="true"]:after {
+	content: "\2212";
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+.panel-default>.panel-heading a[aria-expanded="false"]:after {
+	content: "\002b";
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.accordion-option {
+	width: 100%;
+	float: left;
+	clear: both;
+	margin: 15px 0;
+}
+
+.accordion-option .title {
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+.accordion-option .toggle-accordion {
+	float: right;
+	font-size: 16px;
+	color: #6a6c6f;
+}
+
+.accordion-option .toggle-accordion:before {
+	content: "Expand All";
+}
+
+.accordion-option .toggle-accordion.active:before {
+	content: "Collapse All";
+}
+
+h3 {
+	text-align: center;
+	font-family: Nevis;
+    font-weight: bold;
+    font-size: 35px;
+    color: black;
+}
+
+hr { 
+    display: block;
+    margin-top: 5px;
+	margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+
+.table-bordered th, .table-bordered td {
+	border: 1px solid #ddd!important
+}
+
+thead {
+	color: #fff;
+	background-color: #373a3c;
+}
+
+th {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+td {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+tr:last-child td{
+	color: #fff;
+    background-color: #2F7B91;
+}
+
+.container {
+	ax-width: 960px;
+}
+
+</style>
+
+<hr/>
+<h3>{{ Header }} Accident Records</h3>
+<hr/>
+
+<div class="container">
+    
+    <div class="accordion-option">
+        <a href="javascript:void(0)" class="toggle-accordion active" accordion-id="#accordion"></a>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Today's Accident Stats
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <div class = "table-responsive">
+                        <table class = "table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Unit/Plants</th>
+                                    <th>Regular</th>
+                                    <th>Contract</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                                {% for dl in day_list %}
+                                <tr>
+                                    <td>{{ dl.0 }}</td>
+                                    <td>{{ dl.1 }}</td>
+                                    <td>{{ dl.2 }}</td>
+                                    <td>{{ dl.3 }}</td>                                        
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>TOTAL</td>
+                                    <td>{{ sum_day_reg}}</td>
+                                    <td>{{ sum_day_contr}}</td>
+                                    <td>{{ sum_day }}</td>
+                                </tr>
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                        This Week Accident Stats
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <div class = "table-responsive">
+                        <table class = "table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Unit/Plants</th>
+                                    <th>Regular</th>
+                                    <th>Contract</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for wkl in week_list %}
+                                <tr>
+                                    <td>{{ wkl.0 }}</td>
+                                    <td>{{ wkl.1 }}</td>
+                                    <td>{{ wkl.2 }}</td>
+                                    <td>{{ wkl.3 }}</td>                                        
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>TOTAL</td>
+                                    <td>{{ sum_week_reg}}</td>
+                                    <td>{{ sum_week_contr}}</td>
+                                    <td>{{ sum_week }}</td>
+                                </tr>
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                        This Month Accident Stats
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <div class = "table-responsive">
+                        <table class = "table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Unit/Plants</th>
+                                    <th>Regular</th>
+                                    <th>Contract</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                {% for mnl in month_list %}
+                                <tr>
+                                    <td>{{ mnl.0 }}</td>
+                                    <td>{{ mnl.1 }}</td>
+                                    <td>{{ mnl.2 }}</td>
+                                    <td>{{ mnl.3 }}</td>                                        
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>TOTAL</td>
+                                    <td>{{ sum_month_reg}}</td>
+                                    <td>{{ sum_month_contr}}</td>
+                                    <td>{{ sum_month }}</td>
+                                </tr>
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                        This Year Accident Stats
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body">
+                    <div class = "table-responsive">
+                        <table class = "table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Unit/Plants</th>
+                                    <th>Regular</th>
+                                    <th>Contract</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                {% for yrl in year_list %}
+                                <tr>
+                                    <td>{{ yrl.0 }}</td>
+                                    <td>{{ yrl.1 }}</td>
+                                    <td>{{ yrl.2 }}</td>
+                                    <td>{{ yrl.3 }}</td>                                        
+                                </tr>
+                                {% endfor %}
+                                <tr>
+                                    <td>TOTAL</td>
+                                    <td>{{ sum_year_reg}}</td>
+                                    <td>{{ sum_year_contr}}</td>
+                                    <td>{{ sum_year }}</td>
+                                </tr>
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

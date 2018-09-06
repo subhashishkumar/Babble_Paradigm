@@ -1,0 +1,31 @@
+{% extends 'new_base.html' %}
+{% load crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+
+{% block title %}Filter Records View {% endblock %}
+
+{% block pagecontent %}
+	
+<form method="get">
+	<div class="well">
+		<h4 style="margin-top: 0"> Filters </h4>
+		
+		{% csrf_token %}
+		
+		{% crispy filter.form %}
+				
+		<button type="submit" class="btn btn-primary">
+			<span class="glyphicon glyphicon-search"></span> Search Records
+		</button>
+	
+	</div>
+</form>
+
+<br><br>
+
+<center> <h3 style="margin-bottom: 25px"> Accident Records </h3> </center>
+	
+{% render_table table %}
+
+{% endblock %}
+
